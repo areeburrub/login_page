@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="{{url_for('static', filename='register.css')}}">
+</head>
+
+<body>
+    <center>
+        <form action="/register" method="post" id="register">
+            <h3> register for an account </h3>
+            {% with messages=get_flashed_messages()%} {% for message in messages %} {% if message %}
+            <div class="notification">
+                {{ message}} or <a href="{{url_for('log')}}"> login</a> to your account
+            </div>
+            {% endif %} {% endfor %} {% endwith%}
+            <div class="det">
+                {{form.username.label}}
+                <br/> {{form.username(id="username")}}<br/> {{form.email.label}}<br/><input type="email" name="email" id="email" /><br/> {{form.password.label}}<br/> {{form.password(id="password")}}<br/> <br/>{{form.submit(id="submit")}}
+                <br/>
+                <small>
+                    do you have an account ? <a href="{{url_for('log')}}">sign in</a>
+                </small>
+
+            </div>
+        </form>
+
+    </center>
+</body>
+
+</html>

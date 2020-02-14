@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div style="text-decoration: none;background-color: black;">
+        <nav>
+            <ul style="float: left;">
+                <li id="account" style="list-style-type: none;cursor:pointer;">
+                    <a href="{{url_for('profile')}}" style="text-decoration: none;">account</a>
+                </li>
+            </ul>
+            <ul style="float: left;">
+                {% if current_user.is_authenticated %}
+                <li id="logout" style="list-style-type: none;">
+                    <a href="{{url_for('logout')}}" style="text-decoration: none;">logout</a>
+                </li>
+                {% endif %}
+            </ul>
+            <ul style="float: left;">
+                {%if not current_user.is_authenticated %}
+                <li id="login" style="list-style-type: none;">
+                    <a href="{{url_for('log')}}" style="text-decoration: none;">login</a>
+                </li>
+                {%endif%}
+            </ul>
+            <ul style="float: left;">
+                <li id="notify" style="list-style-type: none;">
+                    <a href="#" style="text-decoration: none;">notify</a>
+                </li>
+            </ul>
+            <ul style="float: left;">
+                <li id="trend" style="list-style-type: none;">
+                    <a href="#" style="text-decoration: none;">trend</a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+</body>
+
+</html>

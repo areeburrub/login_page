@@ -1,0 +1,124 @@
+body {
+    background-color: rgb(0, 0, 0);
+}
+
+.sect1 {
+    padding-left: 10px;
+    padding-top: 20%;
+    padding-right: 10px;
+    padding-bottom: 60%;
+    width: 30%;
+    position: absolute;
+    left: 68.5%;
+    top: 0px;
+    right: 0px;
+    color: aliceblue;
+    border: 1px solid white;
+}
+
+.intro {
+    position: absolute;
+    top: 0px;
+    margin: 0px;
+    line-height: 1.3em;
+    font-size: medium;
+    word-spacing: 2px;
+}
+
+.verify {
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    background-color: orange;
+    border-radius: 6px;
+    border-style: none;
+    cursor: pointer;
+    font-family: sans-serif;
+}
+
+#home {
+    background-color: none;
+    ;
+    padding-left: 30px;
+    padding-right: 30px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    margin: 0px;
+    border-radius: 1px;
+    border-style: none;
+    cursor: pointer;
+}
+
+button :hover {
+    background-color: aliceblue;
+}
+
+#advice {
+    background-color: none;
+    ;
+    padding-left: 30px;
+    padding-right: 30px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    margin: 0px;
+    border-radius: 1px;
+    border-style: none;
+    cursor: pointer;
+}
+
+#market {
+    background-color: none;
+    ;
+    padding-left: 30px;
+    padding-right: 30px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    margin: 0px;
+    border-radius: 1px;
+    border-style: none;
+    cursor: pointer;
+}
+
+#account {
+    background-color: none;
+    ;
+    padding-left: 30px;
+    padding-right: 30px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    margin: 0px;
+    border-radius: 1px;
+    border-style: none;
+    cursor: pointer;
+}
+
+#members {
+    background-color: none;
+    padding-left: 30px;
+    padding-right: 30px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    margin: 0px;
+    border-radius: 1px;
+    border-style: none;
+    cursor: pointer;
+}
+
+#out {
+    padding-left: 30px;
+    padding-right: 30px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    background-color: none;
+    border-style: none;
+    cursor: pointer;
+}
+
+button a {
+    text-decoration: none;
+}
+
+.navig {
+    margin-top: 0px;
+}

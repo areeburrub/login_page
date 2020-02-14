@@ -1,0 +1,14 @@
+body {
+    background-color: rgb(127, 229, 255);
+}
+
+.update {
+    position: relative;
+    top: 70px;
+    display: block;
+    text-align: center;
+}
+
+form {
+    margin-top: 30px;
+}

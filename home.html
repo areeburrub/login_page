@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>home</title>
+    <link rel="stylesheet" href="{{url_for('static', filename='home.css')}}">
+</head>
+
+<body>
+    {% with messages=get_flashed_messages()%} {% for message in messages %} {% if message %}
+    <div class="alert-danger">
+        {{ message}}
+    </div>
+    {% endif %} {% endfor %} {% endwith%}
+    <section>
+        <div class="sect1">
+            <p class="intro">welcome to smart mind investors trading site where you will be continuously informed about the forex signals.However it should be noted that this site is not a trading platform.Be aware of the risk of losing your money if you make poor decision.
+                Also take care most of the times investment is prone to conmen</p>
+            <center>
+                <button class="verify">verify your account</button>
+            </center>
+        </div>
+    </section>
+    <div>
+        <nav class="navig">
+            <button id="home">Home</button>
+            <button id="market">Market</button>
+            <button id="advice">Advice</button>
+            <button id="members">Members</button>
+            <button id="account"><a href="{{url_for('profile')}}">Account</a></button>
+            <button id="out"><a href="{{url_for('logout')}}">Sign out</a></button>
+
+        </nav>
+    </div>
+</body>
+
+
+</html>

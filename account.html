@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>account</title>
+    <link rel="stylesheet" href="{{url_for('static', filename='account.css')}}">
+</head>
+
+<body>
+    <h4>total contributed(balance):</h4>
+    <h4>total returned:</h4>
+    <center>
+
+        <div class="update" action="/home/account">
+            <form action="/profile" method="POST">
+                <br/> {{form.username.label}}
+                <br/> {{form.username()}}
+                <br/> {{form.email.label}}
+                <br/> {{form.email}}
+                <br/> {{form.submit()}}
+            </form>
+        </div>
+
+    </center>
+
+</body>
+
+</html>
