@@ -11,7 +11,7 @@ from flask_bootstrap import Bootstrap
 app = Flask(__name__)
 
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///test.db'
-
+app.config['SQLACHEMY_TRACK_MODIFICATIONS'] = True
 app.config['SECRET_KEY'] = "96f80aa1b9a84b36eca9ea80943227de4e1c1d69390b3cce6e1a633a009a21ab"
 
 login_manager = LoginManager()
@@ -70,7 +70,7 @@ def reg():
             return redirect(url_for('reg'))
         else:
             username = form.username.data
-            email = request.form['email']
+            email = form.email.data
             password = form.password.data
             new = data_b(username=username, email=email, password=generate_password_hash(password, method='sha256'))
             db.session.add(new)
@@ -79,8 +79,9 @@ def reg():
             return redirect(url_for('log'))
 
 
-@app.route('/register/login', methods=['GET', 'POST'])
+@app.route('/login', methods=['GET', 'POST'])
 def log():
+    nxt = request.args.get('next')
     if current_user.is_authenticated:
         return redirect(url_for('home'))
     form = login()
@@ -89,10 +90,9 @@ def log():
     if user:
         if check_password_hash(user.password, form.password.data):
             login_user(user, remember=form.remember.data)
-            return redirect(url_for('home'))
-
+            return redirect(url_for(nxt))
         else:
-            flash('wrong password')
+            flash('invalid creadentials the fields may be case sensitive', 'danger')
             return redirect(url_for('log'))
 
     return render_template('login.html', form=form)
@@ -105,24 +105,20 @@ def home():
 
 
 @app.route('/logout')
-@login_required
 def logout():
-    logout_user()
-    return redirect(url_for('home'))
-
+    if current_user.is_authenticated:
+        logout_user()
+        return redirect(url_for('log'))
+    return redirect(url_for('log'))
 
 @app.route('/home/account', methods=['GET', 'POST'])
 def profile():
-    form = update()
-    username = form.username.data
-    email = form.email.data
-    return render_template('account.html', form=form)
-
-@app.route('/notify')
-@login_required
-def notify():
-    return render_template('notify.html')
+   form = update()
+   username = form.username.data
+   email = form.email.data
+   return render_template('account.html', form=form)
 
 
 if __name__ == '__main__':
     app.run(host='localhost', port=5000, debug=True)
+
