@@ -6,6 +6,7 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_login import LoginManager, UserMixin, login_user, logout_user, login_required, current_user
 from werkzeug.security import generate_password_hash, check_password_hash
 import datetime
+from flask_bootstrap import Bootstrap
 
 app = Flask(__name__)
 
@@ -19,6 +20,7 @@ login_manager.login_view = 'log'
 
 db = SQLAlchemy(app)
 
+bootstrap = Bootstrap(app)
 
 class data_b(UserMixin, db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -68,7 +70,7 @@ def reg():
             return redirect(url_for('reg'))
         else:
             username = form.username.data
-            email = request.form['email'].data
+            email = request.form['email']
             password = form.password.data
             new = data_b(username=username, email=email, password=generate_password_hash(password, method='sha256'))
             db.session.add(new)
@@ -79,6 +81,8 @@ def reg():
 
 @app.route('/register/login', methods=['GET', 'POST'])
 def log():
+    if current_user.is_authenticated:
+        return redirect(url_for('home'))
     form = login()
 
     user = data_b.query.filter_by(username=form.username.data).first()
@@ -99,14 +103,6 @@ def home():
     if request.method == 'GET':
        return render_template('home.html')
 
-def join_member():
-    contributed  = []
-    """
-      those members who will have paid for the account are appended in the list,
-      request should be sent to saf api to obtain the data.Once payment is confirmed,
-      the user account should be updated with his balance.His total contribution will then be recorded
-      and profit will be dispatched according to the contribution.
-    """
 
 @app.route('/logout')
 @login_required

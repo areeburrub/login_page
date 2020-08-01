@@ -1,0 +1,27 @@
+{% extends 'bootstrap/base.html' %}
+{% block body %}
+<div class="container">
+        <form method="POST">
+         {% with messages=get_flashed_messages(with_categories=true)%}
+           {% for category, message in messages %}
+             {% if message %}
+             <div class="alert alert-{{category}}">
+                {{ message}}
+            </div>
+         {% endif %} {% endfor %} {% endwith%}
+         <div class="form-group">
+            {{form.username.label()}}
+            {{form.username(class="form-control form-control-sm")}}
+         </div>
+         <div class="form-group">
+            {{form.password.label}}
+            {{form.password(class="form-control form-control-sm")}}
+         </div>
+         <div class="form-group">
+             {{form.remember()}} {{form.remember.label}}
+         </div>
+            {{form.submit(class="btn btn-danger")}}
+        </form>
+           <small>don't have an account ? <a href="{{url_for('reg')}}">sign up</a></small>
+ </div>
+{% endblock body %}
